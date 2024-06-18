@@ -2,35 +2,32 @@ number: '0123456789'
 symbol: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ €"
 lang_char: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 experiment_name: 'en_filtered'
-train_data: 'all_data'
-valid_data: 'all_data/en_val'
+train_data: 'all_data/en_train_filtered'  # Specific path to training data
+valid_data: 'all_data/en_val'  # Specific path to validation data
 manualSeed: 1111
-workers: 6
-batch_size: 32 #32
-num_iter: 300000
-valInterval: 20000
-saved_model: '' #'saved_models/en_filtered/iter_300000.pth'
-FT: False
-optim: False # default is Adadelta
-lr: 1.
+workers: 2  # Reduced based on system suggestion
+batch_size: 16  # Reduced for potential memory issue
+num_iter: 10000  # Reduced for testing purpose
+valInterval: 2000  # Validation interval
+saved_model: ''  # Path to saved model if any
+FT: False 
+optim: False  # Default is Adadelta
+lr: 1.0
 beta1: 0.9
 rho: 0.95
 eps: 0.00000001
 grad_clip: 5
-#Data processing
-select_data: 'en_train_filtered' # this is dataset folder in train_data
-batch_ratio: '1' 
+select_data: 'en_train_filtered'  # Specify subdirectory for training data
+batch_ratio: '1'
 total_data_usage_ratio: 1.0
 batch_max_length: 34 
 imgH: 64
 imgW: 600
 rgb: False
-contrast_adjust: False
+contrast_adjust: 0.0
 sensitive: True
 PAD: True
-contrast_adjust: 0.0
 data_filtering_off: False
-# Model Architecture
 Transformation: 'None'
 FeatureExtraction: 'VGG'
 SequenceModeling: 'BiLSTM'
